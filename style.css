@@ -1,0 +1,124 @@
+*, *::after, *::before {
+    box-sizing: border-box ;
+}
+
+:root{
+    --slider-padding: 5rem
+}
+
+body {
+    margin: 0;
+    background-color: #333;
+    color:azure;
+    overflow: hidden;
+    background-image: url("./images/netflix.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.slider {
+    --item-per-screen: 4;
+    --slider-index: 0;
+    flex-grow: 1;
+    display: flex;
+    width: calc(100% - 2 * var(--slider-padding));
+    transform: translatex(calc(var(--slider-index) * -100%));
+    margin: 0 .34rem;
+    transition: transform 1000ms ease-in-out;
+}
+
+.slider img {
+    flex: 0 0 calc(100% / var(--item-per-screen));
+    max-width: calc(100% / var(--item-per-screen));
+    aspect-ratio: 16 / 9;
+    padding: .34rem;
+}
+
+.handle { 
+    border: none;
+    border-radius: 1rem;
+    flex-grow: 0;
+    width: var(--slider-padding);
+    background-color: rgb(0, 0, 0, .25);
+    z-index: 10;
+    margin: .25rem 0;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out;
+}
+.icon {
+    transition: transform 150ms ease-in-out;
+    color: rgb(255, 255, 255, .5)
+}
+.left-handle {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.right-handle {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.handle:hover,
+.handle:focus {
+    background-color: rgb(0, 0, 0, .5);
+}
+.left-handle{
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.right-handle{
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.icon:hover,
+.icon:focus {
+    transform: scale(1.2);
+}
+
+.row {
+    
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: .8rem;
+    align-items: center;
+}
+.title {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.progress-bar{
+    display: flex;
+    gap: .3rem;
+}
+
+.progress-item {
+    flex: 0 0 2rem;
+    height: 0.25rem;
+     background-color: rgb(255, 255, 255, .5);
+     min-width: 2rem;
+}
+
+.progress-item.active {
+     background-color: rgb(255, 255, 255, .85);
+}
+
+
+
+@media  screen and (max-width:1000px){
+   .slider{ --item-per-screen: 3;
+   }
+}
